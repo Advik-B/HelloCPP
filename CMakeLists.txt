@@ -31,16 +31,3 @@ add_executable(Hello_SDL2 main.cpp)
 
 target_include_directories(Hello_SDL2 PUBLIC ${SDL2_INCLUDE_DIRS})
 target_link_libraries(Hello_SDL2 ${SDL2_LIBRARIES})
-
-
-# For Windows
-# Recursively glob all the *.dll files in the build directory
-file(GLOB_RECURSE DLLS "${SDL2_DIR}/lib/x64/*.dll")
-
-# Copy all the DLLs to the build directory
-foreach (DLL ${DLLS})
-    add_custom_command(TARGET Hello_SDL2 POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${DLL}"
-            $<TARGET_FILE_DIR:Hello_SDL2>)
-endforeach ()
