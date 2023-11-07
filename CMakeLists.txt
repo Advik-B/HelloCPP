@@ -31,3 +31,8 @@ add_executable(Hello_SDL2 main.cpp)
 
 target_include_directories(Hello_SDL2 PUBLIC ${SDL2_INCLUDE_DIRS})
 target_link_libraries(Hello_SDL2 ${SDL2_LIBRARIES})
+
+# If Release, turn off console
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    set_target_properties(Hello_SDL2 PROPERTIES LINK_FLAGS "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+endif ()
