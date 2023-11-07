@@ -18,7 +18,17 @@ int main(int argc, char *argv[])
   SDL_RenderClear(renderer);
   SDL_RenderPresent(renderer);
 
-  SDL_Delay(3000);
+  bool running = true;
+    SDL_Event event;
+    while (running) {
+        // Set background color to gray
+        SDL_RenderClear(renderer);
+      while (SDL_PollEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+          running = false;
+        }
+      }
+    }
 
   SDL_DestroyWindow(window);
   SDL_Quit();
