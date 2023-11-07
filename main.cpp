@@ -13,15 +13,10 @@ int main(int argc, char* argv[]) {
     window = SDL_CreateWindow(window_title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_x, screen_y, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(renderer);
-    SDL_RenderPresent(renderer);
-
     // Game loop
     bool running = true;
     float color = 0.;
     int dcolor; // Dynamically updating int version of color
-
 
     SDL_Event event;
     while (running) {
